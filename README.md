@@ -1,18 +1,19 @@
-# docker-<PROJECT_NAME>
-[![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/j33r/<PROJECT_NAME>?style=flat-square)](https://microbadger.com/images/j33r/<PROJECT_NAME>)
-![GitHub Workflow Status (branch)](https://img.shields.io/github/actions/workflow/status/<GH_USERNAME>/<REPO_NAME>/deploy.yaml?branch=main&style=flat-square)
-[![Docker Pulls](https://img.shields.io/docker/pulls/j33r/<PROJECT_NAME>?style=flat-square)](https://hub.docker.com/r/j33r/<PROJECT_NAME>)
-[![DockerHub](https://img.shields.io/badge/Dockerhub-j33r/<PROJECT_NAME>-%232496ED?logo=docker&style=flat-square)](https://hub.docker.com/r/j33r/<PROJECT_NAME>)
-[![ghcr.io](https://img.shields.io/badge/ghrc%2Eio-jee%2D-r/<PROJECT_NAME>-%232496ED?logo=github&style=flat-square)](https://ghcr.io/jee-r/<PROJECT_NAME>)
+# docker-feishin
+
+[![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/j33r/feishin?style=flat-square)](https://microbadger.com/images/j33r/feishin)
+![GitHub Workflow Status (branch)](https://img.shields.io/github/actions/workflow/status/jee-r/docker-feishin/deploy.yaml?branch=main&style=flat-square)
+[![Docker Pulls](https://img.shields.io/docker/pulls/j33r/feishin?style=flat-square)](https://hub.docker.com/r/j33r/feishin)
+[![DockerHub](https://img.shields.io/badge/Dockerhub-j33r/feishin-%232496ED?logo=docker&style=flat-square)](https://hub.docker.com/r/j33r/feishin)
+[![ghcr.io](https://img.shields.io/badge/ghrc%2Eio-jee%2D-r/feishin-%232496ED?logo=github&style=flat-square)](https://ghcr.io/jee-r/feishin)
 
 
-A docker image for [<PROJECT_NAME>](<PROJECT_URL>) ![<PROJECT_NAME>'s logo](<PROJECT_LOGO_URL)
+A docker image for [feishin](https://github.com/jeffvli/feishin).
 
-## What is <PROJECT_NAME>?
+## What is Feishin?
 
-From [<PROJECT_NAME>](<PROJECT_URL>):
+From [feishin](https://github.com/jeffvli/feishin):
 
-> <PROJECT_DESCRIPTION>
+> A modern self-hosted music player. 
 
 ## How to use these images
 
@@ -22,11 +23,11 @@ From [<PROJECT_NAME>](<PROJECT_URL>):
 docker run \
     --detach \
     --interactive \
-    --name <PROJECT_NAME> \
+    --name feishin \
     --user $(id -u):$(id -g)
     --env TZ=Europe/Paris
     --volume /etc/localtime:/etc/localtime:ro
-    ghcr.io/<GH_USERNAME>/<PROJECT_NAME>:latest
+    ghcr.io/jee-r/feishin:latest
 ```    
 
 ### Docker Compose
@@ -39,8 +40,8 @@ Here's an example `docker-compose.yml` config:
 version: "3"
 
 services:
-  <PROJECT_NAME>:
-    image: ghcr.io/jee-r/<PROJECT_NAME>:latest    
+  feishin:
+    image: ghcr.io/jee-r/feishin:latest    
     user: "${UID:-1000}:${GID:-1000}"
     restart: unless-stopped
     environment:
@@ -65,7 +66,7 @@ You can also set the `HOME` environment variable this is usefull to get in the r
 
 ## License
 
-This project is under the [GNU Generic Public License v3](https://gitjee-rSERNAME>/docker-<PROJECT_NAME>/blob/master/LICENSE) to allow free use while ensuring it stays open.
+This project is under the [GNU Generic Public License v3](https://gitjee-rSERNAME>/docker-feishin/blob/master/LICENSE) to allow free use while ensuring it stays open.
 
 ## Credits
 
