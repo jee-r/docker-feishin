@@ -12,9 +12,12 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+      - name: remove docker from repo name
+        run: |
+          echo "REPO_NAME=$(echo ${{ github.repository }} | sed 's|^jee-r/||g')" >> $GITHUB_ENV
       - name: mirror to gitlab.com
         uses: jee-r/docker-git-mirror@v1
         with:
-          remote_repo: gitlab.com/jee-r/${{ GITHUB_REPOSITORY#*/ }}.git
+          remote_repo: gitlab.com/jee-r/${{ env.REPO_NAME }}.git
           remote_repo_username: ${{ secrets.GITLAB_USER }}
           remote_repo_password: ${{ secrets.GITLAB_TOKEN }}
