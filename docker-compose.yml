@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  feishin:
+    build:
+      context: .
+      network: host
+    image: ghcr.io/jee-r/feishin:dev
+    container_name: feishin
+    restart: unless-stopped
+    user: "1000:1000"
+    environment:
+      - TZ=Europe/Paris
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - 8081:8080
