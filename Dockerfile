@@ -5,6 +5,7 @@ WORKDIR /app
 RUN apk add \
         git && \
     git clone https://github.com/jeffvli/feishin.git /app && \
+    npm config set fetch-timeout 60000 && \
     npm install && \
     npm run build:web
 
