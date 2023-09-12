@@ -1,17 +1,20 @@
-FROM j33r/<BASE_IMAGE>:<TAG_IMAGE>
+FROM node:18-alpine3.18 as builder
 
-LABEL name="docker-<PROJECT_NAME>" \
+WORKDIR /app
+
+RUN apk add \
+        git && \
+    git clone https://github.com/jeffvli/feishin.git /app && \
+    npm install && \
+    npm run build:web
+
+FROM nginxinc/nginx-unprivileged:alpine3.18
+
+LABEL name="feishin" \
       maintainer="Jee jee@jeer.fr" \
-      description="<PROJECT_SHORT_DESCRIPTION" \
-      url="<PROJECT_URL>" \
-      org.label-schema.vcs-url="https://github.com/jee-r/docker-<PROJECT_NAME>"
-
-COPY rootfs /
-
-RUN rm -rf /tmp/*
-
-WORKDIR <WORKDIR>
-
-STOPSIGNAL SIGQUIT
-VOLUME []
-ENTRYPOINT []
+      description="A modern self-hosted music player." \
+      url="https://github.com/jeffvli/feishin" \
+      org.label-schema.vcs-url="https://github.com/jee-r/docker-feishin" \
+      org.opencontainers.image.source="https://github.com/jee-r/docker-feishin"
+      
+COPY --from=builder /app/release/app/dist/web /usr/share/nginx/htm
